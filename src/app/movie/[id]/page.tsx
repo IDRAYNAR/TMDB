@@ -21,10 +21,8 @@ import {
   Clock, 
   Star, 
   ExternalLink, 
-  Play, 
   Users, 
   Building2,
-  DollarSign,
   ArrowLeft
 } from 'lucide-react';
 

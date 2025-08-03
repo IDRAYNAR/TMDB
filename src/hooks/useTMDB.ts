@@ -61,7 +61,7 @@ export const useNowPlayingMovies = (page: number = 1) => {
 export const useMovieDetails = (id: number | null) => {
   const { data, error, isLoading, mutate } = useSWR<MovieDetails>(
     id ? `movie/${id}` : null,
-    () => id ? getMovieDetails(id) : null,
+    () => getMovieDetails(id!),
     defaultConfig
   );
 
@@ -77,7 +77,7 @@ export const useMovieDetails = (id: number | null) => {
 export const useMovieVideos = (id: number | null) => {
   const { data, error, isLoading, mutate } = useSWR<VideosResponse>(
     id ? `movie/${id}/videos` : null,
-    () => id ? getMovieVideos(id) : null,
+    () => getMovieVideos(id!),
     defaultConfig
   );
 
@@ -93,7 +93,7 @@ export const useMovieVideos = (id: number | null) => {
 export const useMovieCredits = (id: number | null) => {
   const { data, error, isLoading, mutate } = useSWR<CreditsResponse>(
     id ? `movie/${id}/credits` : null,
-    () => id ? getMovieCredits(id) : null,
+    () => getMovieCredits(id!),
     defaultConfig
   );
 
@@ -134,7 +134,7 @@ export const useMovieSearch = (query: string, page: number = 1) => {
 export const useMovieRecommendations = (id: number | null, page: number = 1) => {
   const { data, error, isLoading, mutate } = useSWR<MoviesResponse>(
     id ? [`movie/${id}/recommendations`, page] : null,
-    () => id ? getMovieRecommendations(id, page) : null,
+    () => getMovieRecommendations(id!, page),
     defaultConfig
   );
 
@@ -153,7 +153,7 @@ export const useMovieRecommendations = (id: number | null, page: number = 1) => 
 export const useSimilarMovies = (id: number | null, page: number = 1) => {
   const { data, error, isLoading, mutate } = useSWR<MoviesResponse>(
     id ? [`movie/${id}/similar`, page] : null,
-    () => id ? getSimilarMovies(id, page) : null,
+    () => getSimilarMovies(id!, page),
     defaultConfig
   );
 

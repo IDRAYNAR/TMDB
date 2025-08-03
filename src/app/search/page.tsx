@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useMovieSearch } from '@/hooks/useTMDB';
 import { MovieGrid } from '@/components/movie-grid';
@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
   
@@ -85,7 +85,7 @@ export default function SearchPage() {
       {activeQuery && (
         <div className="mb-6">
           <h2 className="text-xl font-semibold mb-2">
-            Search Results for "{activeQuery}"
+            Search Results for &quot;{activeQuery}&quot;
           </h2>
           {!isLoading && totalResults > 0 && (
             <p className="text-muted-foreground">
@@ -179,10 +179,46 @@ export default function SearchPage() {
             <li>• Try searching for movie titles, actor names, or directors</li>
             <li>• Use specific keywords for better results</li>
             <li>• Check spelling and try alternative spellings</li>
-            <li>• Browse our categories if you're looking for inspiration</li>
+            <li>• Browse our categories if you&apos;re looking for inspiration</li>
           </ul>
         </div>
       )}
     </div>
+  );
+}
+
+function SearchPageFallback() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      {/* Page Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">Search Movies</h1>
+        
+        {/* Search Form Skeleton */}
+        <div className="flex gap-3 max-w-2xl">
+          <div className="relative flex-1">
+            <div className="h-10 bg-muted rounded-md animate-pulse" />
+          </div>
+          <div className="h-10 w-20 bg-muted rounded-md animate-pulse" />
+        </div>
+      </div>
+
+      {/* Search Tips */}
+      <div className="text-center py-12">
+        <Search className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+        <h3 className="text-xl font-semibold mb-2">Search for Movies</h3>
+        <p className="text-muted-foreground">
+          Loading search functionality...
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<SearchPageFallback />}>
+      <SearchContent />
+    </Suspense>
   );
 }

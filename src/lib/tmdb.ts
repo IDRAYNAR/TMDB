@@ -1,4 +1,4 @@
-import { Movie, MoviesResponse, MovieDetails, VideosResponse, CreditsResponse, MovieCategory, TMDBError } from '@/types/tmdb';
+import { MoviesResponse, MovieDetails, VideosResponse, CreditsResponse, MovieCategory, TMDBError } from '@/types/tmdb';
 
 // TMDB API Configuration
 const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL || 'https://api.themoviedb.org/3';
