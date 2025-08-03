@@ -64,8 +64,8 @@ src/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd tmdb-catalog
+   git clone https://github.com/IDRAYNAR/TMDB.git
+   cd TMDB
    ```
 
 2. **Install dependencies**
@@ -192,6 +192,12 @@ This application uses [The Movie Database (TMDB) API](https://www.themoviedb.org
 - `/movie/{id}/credits` - Movie cast and crew
 - `/movie/{id}/similar` - Similar movies
 - `/search/movie` - Search movies
+
+## 👨‍💻 Author
+
+**IDRAYNAR**
+- GitHub: [@IDRAYNAR](https://github.com/IDRAYNAR)
+- Repository: [TMDB Movie Catalog](https://github.com/IDRAYNAR/TMDB)
 
 ## 🤝 Contributing
 

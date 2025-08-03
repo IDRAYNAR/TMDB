@@ -2,6 +2,16 @@
   "name": "tmdb-catalog",
   "version": "0.1.0",
   "private": true,
+  "description": "A modern, responsive movie catalog application built with Next.js, TypeScript, and TMDB API",
+  "author": "IDRAYNAR",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IDRAYNAR/TMDB"
+  },
+  "homepage": "https://github.com/IDRAYNAR/TMDB",
+  "bugs": {
+    "url": "https://github.com/IDRAYNAR/TMDB/issues"
+  },
   "scripts": {
     "dev": "rm -rf .next && next dev",
     "build": "next build",
